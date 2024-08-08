@@ -18,10 +18,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Musito',
       debugShowCheckedModeBanner: false,
-      theme: AppThemes.lightTheme,
-      darkTheme: AppThemes.darkTheme,
+      darkTheme: AppThemes.theme,
       home: const Home(),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
     );
   }
 }
@@ -31,19 +30,29 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        bottomNavigationBar: BottomBar(),
-        body: Center(
-          child: Column(
-            children: [
-              Header(),
-              MusicListItem(
-                backgroundColor: Colors.purpleAccent,
-                type: "Meditation",
+    return Scaffold(
+        bottomNavigationBar: const BottomBar(),
+        body: Container(
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    tileMode: TileMode.clamp,
+                    colors: [
+                  Colors.black87,
+                  Colors.black,
+                ])),
+            child: const Center(
+              child: Column(
+                children: [
+                  Header(),
+                  MusicListItem(
+                      backgroundColor: Colors.purpleAccent,
+                      type: "Meditation",
+                      gradientColor: [Colors.purple, Colors.deepPurple]),
+                  MusicListItem(backgroundColor: Colors.blue, type: "Sleep")
+                ],
               ),
-              MusicListItem(backgroundColor: Colors.blue, type: "Sleep")
-            ],
-          ),
-        ));
+            )));
   }
 }

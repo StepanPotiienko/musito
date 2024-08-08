@@ -6,12 +6,7 @@ class AppColors {
 }
 
 class AppThemes {
-  static final lightTheme = ThemeData(
-      primaryColor: AppColors.lightBlue,
-      brightness: Brightness.light,
-      fontFamily: 'Fira Sans');
-
-  static final darkTheme = ThemeData(
+  static final theme = ThemeData(
       primaryColor: AppColors.darkBlue,
       brightness: Brightness.dark,
       fontFamily: 'Fira Sans');
