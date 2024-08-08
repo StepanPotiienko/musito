@@ -4,18 +4,21 @@ class MusicListItem extends StatelessWidget {
   final Color backgroundColor;
   final Color fontColor;
   final String type;
+  final List<Color> gradientColor;
 
   const MusicListItem(
       {super.key,
       this.backgroundColor = Colors.purple,
       required this.type,
-      this.fontColor = Colors.black});
+      this.fontColor = Colors.black,
+      this.gradientColor = const [Colors.purple, Colors.red]});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          // TODO: #3 On Pressed should play the music of the category 'type'
           content: Text('Now playing $type'),
           duration: const Duration(seconds: 1),
         ));
@@ -26,7 +29,7 @@ class MusicListItem extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: backgroundColor,
+            gradient: LinearGradient(colors: gradientColor),
             boxShadow: const [
               BoxShadow(color: Colors.black12, spreadRadius: 3)
             ]),
